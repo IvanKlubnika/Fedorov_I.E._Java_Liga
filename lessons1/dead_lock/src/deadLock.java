@@ -21,11 +21,11 @@ import java.util.*;
                 return name;
             }
 
-            public void bow(Friend bower) {
 /**
-*В данном случае ключевое слово synchronized, работает таким образом, что оно относится не к методу, а к блокцу метода.
- * Следовательно решается проблема deadlocka тем, что теперь второй поток может зайти в метод, и освободить для первого потока место.
+  *Дедлока нет, так как отпускаем объект и освобождаем место для другого потока, раньше чем переходим к другому объекту
  **/
+            public void bow(Friend bower) {
+
                 synchronized(this){
                         System.out.format("%s: %s подстрелил меня!\n", this.name, bower.getName());
                         System.out.format("%s: стреляю в ответ!\n", this.name);
@@ -53,5 +53,3 @@ import java.util.*;
         }
 
     }
-
-
