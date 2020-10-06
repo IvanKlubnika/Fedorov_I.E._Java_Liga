@@ -27,21 +27,14 @@ import java.util.*;
  * Следовательно решается проблема deadlocka тем, что теперь второй поток может зайти в метод, и освободить для первого потока место.
  **/
                 synchronized(this){
-                    synchronized(bower){
                         System.out.format("%s: %s подстрелил меня!\n", this.name, bower.getName());
                         System.out.format("%s: стреляю в ответ!\n", this.name);
-
-                        bower.bowBack(this);
-                    }
                 }
+                        bower.bowBack(this);                                
             }
 
-            public void bowBack(Friend bower) {
-                synchronized(this){
-                    synchronized(bower) {
+            public synchronized void bowBack(Friend bower) {             
                         System.out.format("%s: %s  подстрелил меня!\n", this.name, bower.getName());
-                    }
-                }
             }
         }
 
