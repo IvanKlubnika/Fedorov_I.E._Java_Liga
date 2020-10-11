@@ -1,0 +1,70 @@
+CREATE DATABASE education;
+
+CREATE TABLE schools 
+(
+    school_number INTEGER NOT NULL PRIMARY KEY,
+    school_address TEXT NOT NULL
+);
+
+
+
+CREATE TABLE teachers 
+(
+    teacher_id INTEGER NOT NULL PRIMARY KEY,
+    teacher_name TEXT NOT NULL,
+    teacher_age INTEGER NOT NULL,
+    teacher_sex BOOLEAN NOT NULL,
+    
+    teacher_school_number INTEGER,
+    FOREIGN KEY (teacher_school_number) REFERENCES schools(school_number)
+);
+
+
+
+CREATE TABLE subjects 
+(
+    subject_id INTEGER NOT NULL PRIMARY KEY,
+    subject_name TEXT NOT NULL
+);
+
+
+
+CREATE TABLE students 
+(
+    student_id INTEGER NOT NULL PRIMARY KEY,
+    student_name TEXT NOT NULL,
+    student_age INTEGER NOT NULL,
+    student_sex BOOLEAN NOT NULL,
+    
+    student_school_number INTEGER,
+    FOREIGN KEY (student_school_number) REFERENCES schools(school_number)
+);
+
+
+
+
+
+
+
+CREATE TABLE students_subjects
+(
+    student_id INTEGER NOT NULL,
+    subject_id INTEGER NOT NULL,
+    PRIMARY KEY (student_id, subject_id),
+    
+    FOREIGN KEY (student_id) REFERENCES students,
+    FOREIGN KEY (subject_id) REFERENCES subjects
+);
+
+
+
+CREATE TABLE teacher_subject
+(
+    teacher_id INTEGER NOT NULL,
+    subject_id INTEGER NOT NULL,
+    PRIMARY KEY (teacher_id, subject_id),
+    
+    FOREIGN KEY (teacher_id) REFERENCES students,
+    FOREIGN KEY (subject_id) REFERENCES subjects
+);
+    
