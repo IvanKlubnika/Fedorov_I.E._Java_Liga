@@ -1,10 +1,19 @@
 CREATE DATABASE education;
 
+
 CREATE TABLE schools 
 (
-    school_number INTEGER NOT NULL PRIMARY KEY,
+    school_id INTEGER NOT NULL PRIMARY KEY,
+    school_number INTEGER NOT NULL,
     school_address TEXT NOT NULL
 );
+
+COMMENT ON TABLE schools IS 'Школы';
+COMMENT ON COLUMN schools.school_id is 'id школы';
+COMMENT ON COLUMN schools.school_number is 'Номер школы';
+COMMENT ON COLUMN schools.school_address is 'Адресс школы';
+
+
 
 
 
@@ -15,9 +24,17 @@ CREATE TABLE teachers
     teacher_age INTEGER NOT NULL,
     teacher_sex BOOLEAN NOT NULL,
     
-    teacher_school_number INTEGER,
-    FOREIGN KEY (teacher_school_number) REFERENCES schools(school_number)
+    teacher_school_id INTEGER,
+    FOREIGN KEY (teacher_school_id) REFERENCES schools(school_id)
 );
+
+COMMENT ON TABLE teachers IS 'Учителя';
+COMMENT ON COLUMN teachers.teacher_id is 'id учителя';
+COMMENT ON COLUMN teachers.teacher_name is 'ФИО учителя';
+COMMENT ON COLUMN teachers.teacher_age is 'Возраст учителя';
+COMMENT ON COLUMN teachers.teacher_sex is 'Пол учителя';
+
+
 
 
 
@@ -26,6 +43,12 @@ CREATE TABLE subjects
     subject_id INTEGER NOT NULL PRIMARY KEY,
     subject_name TEXT NOT NULL
 );
+
+COMMENT ON TABLE subjects IS 'Предметы';
+COMMENT ON COLUMN subjects.subject_id is 'id школы';
+COMMENT ON COLUMN subjects.subject_name is 'Номер школы';
+
+
 
 
 
@@ -36,11 +59,15 @@ CREATE TABLE students
     student_age INTEGER NOT NULL,
     student_sex BOOLEAN NOT NULL,
     
-    student_school_number INTEGER,
-    FOREIGN KEY (student_school_number) REFERENCES schools(school_number)
+    student_school_id INTEGER,
+    FOREIGN KEY (student_school_id) REFERENCES schools(school_id)
 );
 
-
+COMMENT ON TABLE students IS 'Ученики';
+COMMENT ON COLUMN students.student_id is 'id ученика';
+COMMENT ON COLUMN students.student_name is 'ФИО ученика';
+COMMENT ON COLUMN students.student_age is 'Возраст ученика';
+COMMENT ON COLUMN students.student_sex is 'Пол ученика';
 
 
 
@@ -56,6 +83,12 @@ CREATE TABLE students_subjects
     FOREIGN KEY (subject_id) REFERENCES subjects
 );
 
+COMMENT ON TABLE students IS 'Ученики и предметы';
+COMMENT ON COLUMN students.student_id is 'id ученика';
+COMMENT ON COLUMN students.student_name is 'id предмета';
+
+
+
 
 
 CREATE TABLE teacher_subject
@@ -68,3 +101,7 @@ CREATE TABLE teacher_subject
     FOREIGN KEY (subject_id) REFERENCES subjects
 );
     
+    
+COMMENT ON TABLE students IS 'Уччителя и предметы';
+COMMENT ON COLUMN students.student_id is 'id учителя';
+COMMENT ON COLUMN students.student_name is 'id предмета';
