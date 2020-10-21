@@ -1,45 +1,32 @@
 package com.bad.code2;
 
-public class Square implements RectangularShapes {
-    // У квадрата стороны равны, поэтому достаточно только длины
+public class Square implements Shape2D {
+    //Длина
     private Double length;
+    //Ширина
+    private Double width;
 
-    public Square(Double length) {
+    //Конструктор определяющий длину ребер квадрата
+    public Square(Double length, Double width) {
         this.length = length;
+        this.width = width;
     }
 
+    //Возвращает длину
     @Override
     public Double getLength() {
         return length;
     }
 
+    //Возвращает ширину
     @Override
-    public Double getWidth() { return length; }
+    public Double getWidth() {
+        return width;
+    }
 
-    @Override
-    public Double getHeight() { return null; }
-
-
-
-    @Override
+    //Возвращает периметр
     public Double getPerimeter() {
         return 4 * length;
     }
-
-    @Override
-    public Double getArea() {
-        return Math.pow(length, 2);
-    }
-
-    //Квадрат 2D фигура, поэтому объем null
-    @Override
-    public Double getVolume() { return null; }
-
-    public void printParameters(){
-        System.out.println("Square: length - " + length + ", width - " + length + ".");
-        System.out.println("Perimeter: " + getPerimeter() + ".");
-        System.out.println("Area: " + getArea() + ".");
-        System.out.println();
-    }
-
 }
+
