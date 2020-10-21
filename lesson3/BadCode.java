@@ -1,15 +1,22 @@
-package com.bad.code2;
+package com.bad.code;
 
-public class BadCode2 {
+public class BadCode {
+
+    /*Сменил координаты на, на длину ребер. Так как координаты задают не обект, а его место положение в пространстве.
+     *Если же мы хотим использовать координаты и задавать положение фигуры в пространстве,
+     *то трех координат и длины ребра, для задания куба  в пространстве недостаточно.
+     *Так же как недостаточно двух координат и длины ребра для задания квадрата на плоскости.
+     *(Так как две координаты x и y задают положение всего одной точки. А для определения положения квадрата на плоскости
+     * нужно определить минимум 3 точки, т.е. 6 координат и длину ребра)
+     */
     public static void main(String... args) {
-        Square square = new Square(5d);
-        square.printParameters();
+        //Передаем длину ребер куба
+        Qube qube = new Qube(10.0, 10.0, 10.0);
+        System.out.println("Qube volume: " + qube.getVolume());
 
-        Qube qube = new Qube(10d);
-        qube.printParameters();
-
-        Parallelepiped parallelepiped = new Parallelepiped(2d, 3d, 5d);
-        parallelepiped.printParameters();
+        //Передаем длину ребер квадрата
+        Square square = new Square(10.0, 10.0);
+        System.out.println("Square perimeter: " + square.getPerimeter());
     }
 
 }
