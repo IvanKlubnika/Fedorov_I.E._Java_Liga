@@ -1,59 +1,41 @@
-package com.bad.code2;
+package com.bad.code;
 
-public class Qube implements RectangularShapes {
-    // У куба стороны равны, поэтому достаточно только длины
+public class Qube implements Shape3D {
+    //Длина
     private Double length;
+    //Ширина
+    private Double width;
+    //Высота
+    private Double height;
 
-    public Qube(Double length) {
+    //Конструктор определяющий длину ребер куба
+    public Qube(Double length, Double width, Double height) {
         this.length = length;
+        this.width = width;
+        this.height = height;
     }
 
+    //Возвращает длину
     @Override
     public Double getLength() {
         return length;
     }
 
+    //Возвращает ширину
     @Override
     public Double getWidth() {
-        return length;
+        return width;
     }
 
+    //Возвращает высоту
     @Override
     public Double getHeight() {
-        return length;
+        return height;
     }
 
-
-
-    /**
-     * Сумма всех сторон куба 12a
-     */
-    @Override
-    public Double getPerimeter() {
-        return 12 * length;
-    }
-
-    /**
-     * Площадь поверхности куба  6 * (a^2)
-     */
-    @Override
-    public Double getArea() {
-        return 6 * Math.pow(length, 2);
-    }
-
-    /**
-     * Объем куба a^3
-     */
+    //Возвращает объем
     @Override
     public Double getVolume() {
         return Math.pow(length, 3);
-    }
-
-    public void printParameters(){
-        System.out.println("Qube: length - " + length + ", width - " + length + ", height - " + length + ".");
-        System.out.println("Perimeter: " + getPerimeter() + ".");
-        System.out.println("Area: " + getArea() + ".");
-        System.out.println("Volume: " + getVolume() + ".");
-        System.out.println();
     }
 }
