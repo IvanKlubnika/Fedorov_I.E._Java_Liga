@@ -1,4 +1,4 @@
-package com.bad.code2;
+package com.bad.code;
 
 public class Square implements Shape2D {
     //Длина
