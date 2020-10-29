@@ -1,0 +1,35 @@
+package com.ligatask;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/api/v1/order")
+public class OrderController{
+
+    private final OrderService orderService;
+
+
+    @PostMapping
+    public Order createOrder(@RequestBody Order order) {
+
+        try {
+            return orderService.createOrder(order);
+        }
+        catch (InvalidRequest e){
+            System.out.println(e);
+            return order;
+        }
+    }
+
+
+    @GetMapping("/check")
+    public String checkGet() {
+        return "checkGet";
+    }
+}
+
+
+
